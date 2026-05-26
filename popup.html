@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-wrap">
+
+    <!-- ── Header ──────────────────────────────────────────── -->
+    <div class="header">
+      <div class="header-left">
+        <div class="header-icon">⚡</div>
+        <span class="header-title">
+          Context Compressor
+          <span class="header-version">v1.0</span>
+        </span>
+      </div>
+      <button class="btn-icon" id="btnSettings" title="Settings">⚙</button>
+    </div>
+
+    <!-- ── Status Banners ──────────────────────────────────── -->
+    <div class="status-banner not-claude" id="bannerNotClaude" style="display:none">
+      <span class="status-dot"></span>
+      <span>Not on claude.ai — navigate to a conversation first</span>
+    </div>
+
+    <div class="status-banner on-claude" id="bannerOnClaude" style="display:none">
+      <span class="status-dot"></span>
+      <span>Connected to claude.ai</span>
+    </div>
+
+    <div class="status-banner no-key" id="bannerNoKey" style="display:none">
+      <span class="status-dot"></span>
+      <span>No API key configured — using rule-based mode. <a href="#" id="linkSetupKey">Configure →</a></span>
+    </div>
+
+    <!-- ── Compress Button ─────────────────────────────────── -->
+    <button class="btn-compress" id="btnCompress" disabled>
+      ⚡ Compress This Chat
+    </button>
+
+    <!-- ── Progress ────────────────────────────────────────── -->
+    <div class="progress-section" id="progressSection">
+      <div class="progress-steps">
+        <span class="progress-step" id="stepScrape">● Scraping</span>
+        <span class="progress-divider"></span>
+        <span class="progress-step" id="stepPretrim">● Pre-trim</span>
+        <span class="progress-divider"></span>
+        <span class="progress-step" id="stepCompress">● Compress</span>
+      </div>
+    </div>
+
+    <!-- ── Error ───────────────────────────────────────────── -->
+    <div class="error-section" id="errorSection"></div>
+
+    <!-- ── Stats ───────────────────────────────────────────── -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-card">
+        <div class="stat-value" id="statOriginal">—</div>
+        <div class="stat-label">Original</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statCompressed">—</div>
+        <div class="stat-label">Compressed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value highlight" id="statReduction">—</div>
+        <div class="stat-label">Saved</div>
+      </div>
+    </div>
+
+    <!-- ── Result ──────────────────────────────────────────── -->
+    <div class="result-section" id="resultSection">
+      <div class="result-header">
+        <span class="result-label">
+          Output
+          <span class="method-badge" id="methodBadge"></span>
+        </span>
+        <button class="btn-copy" id="btnCopy">📋 Copy</button>
+      </div>
+      <div class="result-output" id="resultOutput"></div>
+
+      <div class="info-msg">
+        <strong>Next step:</strong> Paste this into a new Claude conversation as your first message.
+      </div>
+
+      <button class="debug-toggle" id="debugToggle">▸ Debug info</button>
+      <div class="debug-content" id="debugContent"></div>
+    </div>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context Compressor — Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-wrap">
+
+    <!-- Header -->
+    <div>
+      <div class="options-header">
+        <div class="options-icon">⚡</div>
+        <div>
+          <div class="options-title">Context Compressor</div>
+          <div class="options-subtitle">Settings</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Provider Selection -->
+    <div class="card">
+      <div class="card-title">🔌 Provider</div>
+
+      <div class="field">
+        <label class="field-label" for="provider">API Provider</label>
+        <select id="provider" class="select-input">
+          <option value="openrouter">OpenRouter</option>
+          <option value="qwen">Qwen Cloud (Alibaba DashScope)</option>
+        </select>
+        <div class="field-hint">Choose which API provider to use for AI compression.</div>
+      </div>
+    </div>
+
+    <!-- OpenRouter Config -->
+    <div class="card" id="openrouterSection">
+      <div class="card-title">🔑 OpenRouter</div>
+
+      <div class="setup-guide">
+        <strong>Quick Setup</strong>
+        <ol>
+          <li>Get a free API key at <a href="https://openrouter.ai" target="_blank" rel="noopener">openrouter.ai</a> → Sign up → Keys</li>
+          <li>Paste your key below</li>
+        </ol>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="apiKey">API Key</label>
+        <div class="input-row">
+          <input type="password" id="apiKey" placeholder="sk-or-v1-..." autocomplete="off">
+          <button class="btn btn-sm" id="btnToggleKey" title="Show/hide key">👁</button>
+        </div>
+        <div class="status-row">
+          <span class="status-dot gray" id="keyDot"></span>
+          <span class="status-text" id="keyStatus">No key entered</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="modelId">Model ID</label>
+        <input type="text" id="modelId" value="deepseek/deepseek-v4-flash:free" placeholder="deepseek/deepseek-v4-flash:free">
+        <div class="field-hint">
+          Browse models at <a href="https://openrouter.ai/models" target="_blank" rel="noopener" style="color: var(--accent)">openrouter.ai/models</a>. 
+          Search "free" for free models.
+        </div>
+      </div>
+    </div>
+
+    <!-- Qwen Cloud Config -->
+    <div class="card" id="qwenSection" style="display:none">
+      <div class="card-title">🔑 Qwen Cloud (DashScope)</div>
+
+      <div class="setup-guide">
+        <strong>Quick Setup</strong>
+        <ol>
+          <li>Go to <a href="https://dashscope.console.aliyun.com/" target="_blank" rel="noopener">DashScope Console</a> (international: <a href="https://modelstudio.console.alibabacloud.com/" target="_blank" rel="noopener">Model Studio</a>)</li>
+          <li>Sign up / log in → go to API Keys</li>
+          <li>Create a key and paste it below</li>
+        </ol>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="qwenApiKey">API Key</label>
+        <div class="input-row">
+          <input type="password" id="qwenApiKey" placeholder="sk-..." autocomplete="off">
+          <button class="btn btn-sm" id="btnToggleQwenKey" title="Show/hide key">👁</button>
+        </div>
+        <div class="status-row">
+          <span class="status-dot gray" id="qwenKeyDot"></span>
+          <span class="status-text" id="qwenKeyStatus">No key entered</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="qwenModelId">Model ID</label>
+        <input type="text" id="qwenModelId" value="qwen-plus" placeholder="qwen-plus">
+        <div class="field-hint">
+          Common models: <code>qwen-plus</code>, <code>qwen-turbo</code>, <code>qwen-max</code>, <code>qwen3-235b-a22b</code>.
+          See <a href="https://help.aliyun.com/zh/model-studio/getting-started/models" target="_blank" rel="noopener" style="color: var(--accent)">model list</a>.
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="card">
+      <div class="card-title">⚙ Actions</div>
+
+      <div class="save-row">
+        <button class="btn btn-primary" id="btnSave">💾 Save Settings</button>
+        <span class="save-feedback" id="saveFeedback">✓ Saved!</span>
+      </div>
+
+      <div class="save-row">
+        <button class="btn" id="btnTest">🔌 Test Connection</button>
+        <span class="status-text" id="testStatus"></span>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="options-footer">
+      Context Compressor v1.0.0 — 
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a> — 
+      No data leaves your browser except API calls to your selected provider.
+    </div>
+
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
