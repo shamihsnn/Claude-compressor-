@@ -1,4 +1,4 @@
-# ⚡ Context Compressor
+#  Context Compressor
 
 > One-click conversation compression for Claude.ai — compress long chats into dense context resumes you can paste into a new conversation.
 
